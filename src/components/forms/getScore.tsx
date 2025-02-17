@@ -6,7 +6,7 @@ const GetScore = () => {
 
     const colors = ['#D30027' ,'#F87501', '#F8B300', '#89D421', '#44BC38']
     const [question, setQuestion] = useState(0);
-    const [currentQuestion, setCurrentQuestion] = useState("asd");  
+    const [currentQuestion, setCurrentQuestion] = useState("Loading...");  
     const [currentQuestionID, setCurrentQuestionID] = useState(0);
 
     let questionScore: string[] = [
@@ -28,22 +28,21 @@ const GetScore = () => {
     useEffect(() => {
         setCurrentQuestion(make_question_title(questionScore[question]));
         setCurrentQuestionID(0);
-    }, [question]);
+    }, []);
 
     const handleColorClick = (e: React.MouseEvent<HTMLElement>, index: number) => {
         e.preventDefault();
-        console.log(index)
         let get_local_storage = JSON.parse(localStorage.getItem('form_data') || '{}');
         let store_data = {
             ...get_local_storage,
             [questionScore[question]]: index
         }
         localStorage.setItem('form_data', JSON.stringify(store_data));
-        console.log(localStorage.getItem('form_data'));
-        setCurrentQuestionID((prev)=>{return prev + 1});
-        setQuestion((prev)=>{return prev + 1});
-        setCurrentQuestion(make_question_title(questionScore[question]));
-        console.log(question, currentQuestionID, currentQuestion);
+        if(question < questionScore.length){
+            setCurrentQuestionID((prev)=>{return prev + 1});
+            setQuestion((prev)=>{return prev + 1});
+            setCurrentQuestion(make_question_title(questionScore[question]));
+        }
     }
     const handleHover = (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
         e.preventDefault();
