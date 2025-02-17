@@ -23,23 +23,19 @@ const Step1Form = () => {
     <div className="p-6 w-full flex flex-col justify-center items-center">
       {form_list_data.map((form, index) => (
         <div key={index} className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
-          {/* Title */}
           <h1 className="text-[#FFFFFF] text-[24px] font-[600] text-center mb-6">
             {form.title}
           </h1>
 
-          {/* Options */}
           <div className="w-full flex flex-col justify-center items-center">
             {form.options.map((option, i) => (
               <div
                 key={i}
                 className="w-full h-[57px] flex flex-row justify-start items-center gap-4 bg-white rounded-full p-4 shadow-md mb-4"
               >
-                {/* Icon container */}
                 <div className="w-[44px] h-[44px] bg-[#C388F0] rounded-full flex justify-center items-center p-2">
                   {option.icon}
                 </div>
-                {/* Option name */}
                 <div className="text-lg font-semibold text-gray-800">{option.name}</div>
               </div>
             ))}
