@@ -7,9 +7,6 @@ const GetScore = () => {
     const colors = ['#D30027' ,'#F87501', '#F8B300', '#89D421', '#44BC38']
     const [question, setQuestion] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState("Loading...");  
-    const [currentQuestionID, setCurrentQuestionID] = useState(0);
-
-    const [image, setImage] = useState("https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png");
 
     let questionScore: string[] = [
         "campusLifeScore",
@@ -41,7 +38,6 @@ const GetScore = () => {
 
     useEffect(() => {
         setCurrentQuestion(make_question_title(questionScore[question]));
-        setCurrentQuestionID(0);
     }, []);
 
     const handleColorClick = (e: React.MouseEvent<HTMLElement>, index: number) => {
@@ -53,7 +49,6 @@ const GetScore = () => {
         }
         localStorage.setItem('form_data', JSON.stringify(store_data));
         if(question < questionScore.length){
-            setCurrentQuestionID((prev)=>{return prev + 1});
             setQuestion((prev)=>{return prev + 1});
             setCurrentQuestion(make_question_title(questionScore[question]));
         }
@@ -70,8 +65,6 @@ const GetScore = () => {
         }
         const element = document.getElementById(index.toString()) as HTMLButtonElement;
         element.style.backgroundColor = colors[index];
-
-        console.log(localStorage.getItem('form_data'));
     }
     return (
         <div className="p-6 w-full flex flex-col justify-center items-center">
@@ -80,13 +73,18 @@ const GetScore = () => {
                     {currentQuestion}
                 </h1>
                 <form className="w-full flex flex-col justify-between items-center">
-                    <Image 
-                        src={question_image[question]}
-                        alt="Campus Life Illustration"
-                        width={368} 
-                        height={294}
-                        className='w-[200px] h-[200px] object-contain mb-6'
-                    />
+                    {
+                        question_image[question] ?
+                        <Image 
+                            src={question_image[question]}
+                            alt="Campus Life Illustration"
+                            width={368} 
+                            height={294}
+                            className='w-[200px] h-[200px] object-contain mb-6'
+                        />
+                        :
+                        <h1>Loading...</h1>
+                    }
                     <div className="flex flex-row gap-2">
                         {
                             Array.from(colors, (_, index) => (
