@@ -5,30 +5,34 @@ import { current_grade, stream, entrance_exam, specialization } from "@/componen
 
 const Step1Form = ({params}: {params: any}) => {
 
-  let form_list_data: any, redirect_link: string, progress: number;
+  let form_list_data: any, redirect_link: string, progress: number, completed_steps: number[];
 
   if (params.type === "current-grade") {
     form_list_data = current_grade;
     redirect_link = "/form/stream";
     progress = 3;
+    completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "stream") {
     form_list_data = stream;
     redirect_link = "/cgpa";
     progress = 7;
+    completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "entrance-exam") {
     form_list_data = entrance_exam;
     redirect_link = "/exam-score";
     progress = 15;
+    completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "specialization") {
     form_list_data = specialization;
     redirect_link = "/form/specialization";
     progress = 28;
+    completed_steps = [1, 1, 0, 0, 0];
   }
 
   return (
     <>
       <Profile />
-      <ProgressBar progress={progress} completed_steps={[1, 0, 0, 0, 0]} />
+      <ProgressBar progress={progress} completed_steps={completed_steps} />
       <div className="p-6 w-full flex flex-col justify-center items-center">
         {form_list_data.map((form: any, index: any) => (
           <div key={index} className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
