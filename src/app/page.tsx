@@ -2,12 +2,11 @@
 import { useState } from "react";
 import Profile from "@/components/profile";
 import ProgressBar from "@/components/progress_bar";
-import InfoPopup from "@/components/info_popup";
-import Step1Form from "@/components/forms/step1_form";
-import InputForm from "@/components/forms/input_form";
+import InfoPopup from "@/components/info_popup"
 import ResearchScoreForm from "@/components/forms/researchScore";
 import TheoryScoreForm from "@/components/forms/theoryScore";
 import GetScore from "@/components/forms/getScore";
+import Multiselect from "@/components/forms/multiselect";
 
 const data = {
   "state": "Tamil Nadu",
@@ -18,6 +17,7 @@ const data = {
   
   "campusLifeScore": 1,
   "internationalExposureScore": 1,
+
   "placementRecordScore": 1,
   "academicScore": 1,
   "infrastructureScore": 1,
@@ -31,12 +31,12 @@ export default function Home() {
   return (
     <>
       <Profile />
-      <ProgressBar progress={14} />
-      {/* <InfoPopup /> */}
-      {/* <Step1Form /> */}
+      <ProgressBar progress={1} completed_steps={[1,0,0,0,0]} />
+      <InfoPopup />
       {/* <ResearchScoreForm /> */}
       {/* <TheoryScoreForm /> */}
-      <GetScore />
+      {/* <GetScore /> */}
+      {/* <Multiselect /> */}
     </>
   );
 }

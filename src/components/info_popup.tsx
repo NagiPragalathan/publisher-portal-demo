@@ -7,9 +7,9 @@ const InfoPopup = () => {
     <div className='w-full px-6 mt-12'>   
         <div className='relative w-full flex flex-col justify-center items-center p-6 bg-[#FFFFFFE3] rounded-md'>
             <div className='w-full flex flex-row justify-end items-end'>
-                <div className='absolute top-2 right-2 w-[20px] h-[20px] bg-[#FFBD58] rounded-full flex justify-center items-center'>
+                <a href="/form/current-grade" className='absolute top-2 right-2 w-[20px] h-[20px] bg-[#FFBD58] rounded-full flex justify-center items-center'>
                     <IoClose className='text-black' />
-                </div>
+                </a>
             </div>
             <h1 className='text-[#131313] text-[22px] font-[600] text-center mb-2'>
                 Important Information Before You Begin
