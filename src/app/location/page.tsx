@@ -29,7 +29,7 @@ const InputForm = () => {
 
     if (state) {
       // Fetch cities for selected state
-      fetch('/api/location') // Reuse the internal API route to fetch the updated data
+      fetch('https://edulot-api.netlify.app/location') // Reuse the internal API route to fetch the updated data
         .then((response) => response.json())
         .then((data) => {
           setCities(data[state] || []); // Set cities based on selected state
