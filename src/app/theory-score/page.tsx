@@ -1,3 +1,5 @@
+'use client';
+import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
 
 const ResearchScoreForm = () => {
@@ -12,6 +14,7 @@ const ResearchScoreForm = () => {
     };
     localStorage.setItem('form_data', JSON.stringify(formData));
     console.log(localStorage.getItem('form_data'));
+    redirect('/get-score');
   };
 
   return (

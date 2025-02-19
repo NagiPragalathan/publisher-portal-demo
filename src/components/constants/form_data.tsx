@@ -119,7 +119,7 @@ const ranges = {
     budget_range: {
       title: "What is Your Budget Range for the Total Course?",
       image_url: "https://skyaitechnologies.com/wp-content/uploads/2022/10/kindpng_7129972-1024x703.png",
-      next_link:  '/range/budget_range'
+      next_link:  '/location'
     }
 } 
 
