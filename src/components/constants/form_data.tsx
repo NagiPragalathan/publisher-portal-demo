@@ -110,6 +110,20 @@ const field_of_interest = [
     },   
 ]
 
+const ranges = {
+    salary_range: {
+      title: "What is Your Target Salary Range?",
+      image_url: "https://static.vecteezy.com/system/resources/previews/000/486/174/original/isometric-artificial-intelligence-vector-illustration.jpg",
+      next_link:  '/range/budget_range'
+    },
+    budget_range: {
+      title: "What is Your Budget Range for the Total Course?",
+      image_url: "https://skyaitechnologies.com/wp-content/uploads/2022/10/kindpng_7129972-1024x703.png",
+      next_link:  '/range/budget_range'
+    }
+} 
+
+
 
 // Export named variables
-export { current_grade, stream, entrance_exam, specialization, field_of_interest };
+export { current_grade, stream, entrance_exam, specialization, field_of_interest, ranges };

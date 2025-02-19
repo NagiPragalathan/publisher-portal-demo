@@ -24,7 +24,7 @@ const Step1Form = ({params}: {params: any}) => {
     completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "specialization") {
     form_list_data = specialization;
-    redirect_link = "/form/specialization";
+    redirect_link = "/range/salary_range";
     progress = 28;
     completed_steps = [1, 1, 0, 0, 0];
   }
