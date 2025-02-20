@@ -22,7 +22,19 @@ const InputForm = () => {
       .catch((error) => console.error("Error fetching location data:", error));
   }, []);
 
-  const handleStateChange = (event) => {
+
+  useEffect(() => {
+    let stored_data = JSON.parse(localStorage.getItem('form_data') || '{}');
+    localStorage.setItem('form_data', JSON.stringify({
+      ...stored_data,
+      "state": selectedState,
+      "city": selectedCity,
+      "rankingType": "EngineeringRanking",
+    }));
+    console.log(localStorage.getItem('form_data'));
+  }, [selectedCity, selectedState]);
+
+  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const state = event.target.value;
     setSelectedState(state);
     setSelectedCity(''); // Reset city when state changes
@@ -38,7 +50,7 @@ const InputForm = () => {
     }
   };
 
-  const handleCityChange = (event) => {
+  const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
   };
 
