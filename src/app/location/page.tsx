@@ -27,9 +27,9 @@ const InputForm = () => {
     let stored_data = JSON.parse(localStorage.getItem('form_data') || '{}');
     localStorage.setItem('form_data', JSON.stringify({
       ...stored_data,
-      "state": selectedState,
-      "city": selectedCity,
-      "rankingType": "EngineeringRanking",
+      state: selectedState,
+      city: selectedCity,
+      rankingType: "EngineeringRanking",
     }));
     console.log(localStorage.getItem('form_data'));
   }, [selectedCity, selectedState]);
