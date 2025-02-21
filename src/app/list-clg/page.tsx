@@ -46,7 +46,7 @@ export default function RankingResults() {
           influenceFactor: stored_data.influenceFactor || 0
         }
 
-        const response = await fetch('http://127.0.0.1:5000/rank_colleges', {  // Pointing to Flask server
+        const response = await fetch('https://edulot-api.netlify.app/ranker', {  // Pointing to Flask server
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

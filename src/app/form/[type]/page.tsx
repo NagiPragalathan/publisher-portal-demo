@@ -1,32 +1,36 @@
 import React from 'react';
 import Profile from "@/components/profile";
 import ProgressBar from "@/components/progress_bar";
-import { current_grade, stream, entrance_exam, specialization } from "@/components/constants/form_data";
+import { current_grade, stream, entrance_exam, specialization, graduate } from "@/components/constants/form_data";
 
 const Step1Form = ({params}: {params: any}) => {
 
-  let form_list_data: any, redirect_link: string, progress: number, completed_steps: number[];
+  let form_list_data: any, progress: number, completed_steps: number[];
 
   if (params.type === "current-grade") {
     form_list_data = current_grade;
-    redirect_link = "/form/stream";
     progress = 3;
     completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "stream") {
     form_list_data = stream;
-    redirect_link = "/cgpa";
+    progress = 7;
+    completed_steps = [1, 0, 0, 0, 0];
+  }else if (params.type === "stream10") {
+    form_list_data = stream;
     progress = 7;
     completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "entrance-exam") {
     form_list_data = entrance_exam;
-    redirect_link = "/exam-score";
     progress = 15;
     completed_steps = [1, 0, 0, 0, 0];
   } else if (params.type === "specialization") {
     form_list_data = specialization;
-    redirect_link = "/range/salary_range";
     progress = 28;
     completed_steps = [1, 1, 0, 0, 0];
+  } else if (params.type === "graduate") {
+    form_list_data = graduate;
+    progress = 3;
+    completed_steps = [1, 0, 0, 0, 0];
   }
 
   return (
@@ -42,7 +46,7 @@ const Step1Form = ({params}: {params: any}) => {
 
             <div className="w-full flex flex-col justify-center items-center">
               {form.options.map((option: any, i: any) => (
-                <a href={redirect_link}
+                <a href={params.type === "stream10" ? "/field-interest" : option.next_link}
                   key={i}
                   className="w-full h-[57px] flex flex-row justify-start items-center gap-4 bg-white rounded-full p-4 shadow-md mb-4"
                 >
@@ -53,6 +57,11 @@ const Step1Form = ({params}: {params: any}) => {
                 </a>
               ))}
             </div>
+            {
+              params.type === "entrance-exam" && (
+                <p className="text-[#FFFFFF] text-[12px] font-[400] text-center mt-4">Haven’t Taken Entrance Exams Yet? <a href="/field-interest" className="text-[#FFBD58] text-[12px] font-[400] text-center mt-4">Skip This for Now!</a></p>
+              )
+            }
           </div>
         ))}
       </div>

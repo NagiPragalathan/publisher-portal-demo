@@ -11,9 +11,9 @@ import Multiselect from "@/components/forms/multiselect";
 const data = {
   "state": "Tamil Nadu",
   "city": "Chennai",
-  "rankingType": "EngineeringRanking",
-  "researchScore": 1,
-  "theoryScore": 1,
+  "rankingType": "EngineeringRanking", //
+  "researchScore": 1, //
+  "theoryScore": 1,//
   
   "campusLifeScore": 1,
   "internationalExposureScore": 1,

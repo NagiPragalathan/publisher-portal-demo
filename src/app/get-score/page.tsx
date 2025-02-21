@@ -43,9 +43,7 @@ const GetScore = () => {
         console.log(currentQuestion, questionScore[question], localStorage.getItem('form_data'));
 
         if (questionScore[question+1] === undefined){
-            setTimeout(() => {
-                redirect('/multiselect')
-            }, 5000);
+            redirect('/multiselect')
         }
     }
     const handleHover = (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
