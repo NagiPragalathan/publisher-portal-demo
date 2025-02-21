@@ -4,9 +4,21 @@ import React, { useState } from 'react'; // Import useState
 import Profile from '@/components/profile';
 import ProgressBar from '@/components/progress_bar';
 import { FaAngleRight } from 'react-icons/fa';
-
+import { redirect } from 'next/navigation';
 const ResearchScoreForm = () => {
   const [selectedOption, setSelectedOption] = useState(''); // Using useState
+
+  const handleRadioChange = (e) => {
+    const value = e.target.value;
+    setSelectedOption(value);
+
+    // Redirect based on the selected option
+    if (value === 'yes') {
+      redirect('/asdf'); // Redirect to /asdf if "Yes" is selected
+    } else if (value === 'no') {
+      redirect('/research-score'); // Redirect to /qwer if "No" is selected
+    }
+  };
 
   return (
     <>
@@ -30,7 +42,7 @@ const ResearchScoreForm = () => {
                     value="yes"
                     className="mr-2"
                     checked={selectedOption === 'yes'}
-                    onChange={(e) => setSelectedOption(e.target.value)}
+                    onChange={handleRadioChange} // Use the handleRadioChange function
                   />
                   <label htmlFor="yes" className="text-white">
                     Yes
@@ -44,7 +56,7 @@ const ResearchScoreForm = () => {
                     value="no"
                     className="mr-2"
                     checked={selectedOption === 'no'}
-                    onChange={(e) => setSelectedOption(e.target.value)}
+                    onChange={handleRadioChange} // Use the handleRadioChange function
                   />
                   <label htmlFor="no" className="text-white">
                     No
