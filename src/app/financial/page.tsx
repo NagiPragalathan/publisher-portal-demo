@@ -14,7 +14,7 @@ const ResearchScoreForm = () => {
 
     // Redirect based on the selected option
     if (value === 'yes') {
-      redirect('/asdf'); // Redirect to /asdf if "Yes" is selected
+      redirect('/financial-aid'); // Redirect to /asdf if "Yes" is selected
     } else if (value === 'no') {
       redirect('/research-score'); // Redirect to /qwer if "No" is selected
     }
@@ -27,12 +27,12 @@ const ResearchScoreForm = () => {
       <div className="p-6 w-full flex flex-col justify-center items-center">
         <div className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
           <h1 className="text-[#FFFFFF] text-[24px] font-[600] text-center mb-16">
-            Research Score
+          Financial Aid
           </h1>
           <form className="w-full flex flex-col justify-between items-center">
             {/* Yes/No Checkbox Section */}
             <div className="w-full mb-4 flex flex-col justify-between items-center gap-4">
-              <label className="text-white">Do you have a research score?</label>
+              <label className="text-white">Do You Need Financial Aid?</label>
               <div className="flex space-x-4">
                 <div className="flex items-center">
                   <input

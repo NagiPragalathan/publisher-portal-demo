@@ -121,22 +121,22 @@ const specialization = [
         {
           icon: <FaGraduationCap className="text-[50px] text-[#FFFFFF]" />,
           name: 'Civil',
-          next_link: '/range/salary_range'
+          next_link: '/available-programs'
         },
         {
           icon: <FaAppleAlt className="text-[50px] text-[#FFFFFF]" />,
           name: 'Mechanical',
-          next_link: '/range/salary_range'
+          next_link: '/available-programs'
         },
         {
           icon: <FaAppleAlt className="text-[50px] text-[#FFFFFF]" />,
           name: 'Electrical',
-          next_link: '/range/salary_range'
+          next_link: '/available-programs'
         },
         {
           icon: <FaAppleAlt className="text-[50px] text-[#FFFFFF]" />,
           name: 'Computer Science',
-          next_link: '/range/salary_range'
+          next_link: '/available-programs'
         },
       ],
     },

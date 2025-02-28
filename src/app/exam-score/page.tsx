@@ -17,8 +17,11 @@ const InputForm = () => {
                 <form className="w-full flex flex-col justify-between items-center">
                     <select className="w-full h-[57px] rounded-lg p-4 shadow-md mb-4 text-gray-500">
                         <option value="">Select Exam</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        <option value="1">JEE Main</option>
+                        <option value="2">JEE Advanced</option>
+                        <option value="3">BITSAT</option>
+                        <option value="4">VITEEE</option>
+                        <option value="5">COMEDK UGET</option>
                     </select>
                     <input type="text" className="w-full h-[57px] bg-white rounded-lg p-4 shadow-md mb-4 text-gray-500" placeholder="Enter Your Exam Score" />
                     <div className="w-full flex flex-row justify-end items-center mt-16">

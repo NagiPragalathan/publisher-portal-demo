@@ -4,91 +4,98 @@ import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
+const colors = ['#D30027', '#F87501', '#F8B300', '#89D421', '#44BC38'];
+
+const questionData = [
+  {
+    key: "campusLifeScore",
+    image: 'https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png'
+  },
+  {
+    key: "internationalExposureScore",
+    image: 'https://png.pngtree.com/png-clipart/20230811/original/pngtree-expo-center-color-icon-vector-picture-image_7867463.png'
+  }
+];
 
 const GetScore = () => {
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [selectedScore, setSelectedScore] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState("Loading...");
 
-    const colors = ['#D30027' ,'#F87501', '#F8B300', '#89D421', '#44BC38']
-    const [question, setQuestion] = useState(0);
-    const [currentQuestion, setCurrentQuestion] = useState("Loading...");  
+  useEffect(() => {
+    setCurrentQuestion(questionData[questionIndex].key.replace(/([A-Z])/g, ' $1').trim());
+  }, [questionIndex]);
 
-    let questionScore: string[] = [
-        "campusLifeScore",
-        "internationalExposureScore",
-    ]
-    let question_image: string[] = [
-        'https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png',
-        'https://png.pngtree.com/png-clipart/20230811/original/pngtree-expo-center-color-icon-vector-picture-image_7867463.png',
-    ]
+  const handleSelect = (e: React.MouseEvent<HTMLElement>, score: number) => {
+    e.preventDefault();
 
-    let make_question_title = (text: string)=>{
-        return text.replace(/([A-Z])/g, ' $1').trim();
-    }
+    if (selectedScore !== null) return; // Prevent multiple selections
 
-    useEffect(() => {
-        setCurrentQuestion(make_question_title(questionScore[question]));
-    }, []);
+    const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
+    const updatedData = {
+      ...formData,
+      [questionData[questionIndex].key]: score
+    };
 
-    const handleColorClick = (e: React.MouseEvent<HTMLElement>, index: number) => {
-        e.preventDefault();
-        let get_local_storage = JSON.parse(localStorage.getItem('form_data') || '{}');
-        let store_data = {
-            ...get_local_storage,
-            [questionScore[question]]: index
-        }
-        localStorage.setItem('form_data', JSON.stringify(store_data));
-        if(question < questionScore.length){
-            setQuestion((prev)=>{return prev + 1});
-            setCurrentQuestion(make_question_title(questionScore[question]));
-        }
-        console.log(currentQuestion, questionScore[question], localStorage.getItem('form_data'));
+    localStorage.setItem('form_data', JSON.stringify(updatedData));
+    setSelectedScore(score);
 
-        if (questionScore[question+1] === undefined){
-            redirect('/multiselect')
-        }
-    }
-    const handleHover = (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
-        e.preventDefault();
-        for (let i = 0; i < index; i++) {
-            const element = document.getElementById(i.toString()) as HTMLButtonElement;
-            element.style.backgroundColor = colors[i];
-        }
-        for (let i = index; i < colors.length; i++) {
-            const element = document.getElementById(i.toString()) as HTMLButtonElement;
-            element.style.backgroundColor = '#9ca3af';
-        }
-        const element = document.getElementById(index.toString()) as HTMLButtonElement;
-        element.style.backgroundColor = colors[index];
-    }
-    return (
-        <div className="p-6 w-full flex flex-col justify-center items-center">
-            <div className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
-                <h1 className="text-[#FFFFFF] text-[24px] font-[600] text-center mb-16">
-                    {currentQuestion}
-                </h1>
-                <form className="w-full flex flex-col justify-between items-center">
-                    {
-                        question_image[question] ?
-                        <Image 
-                            src={question_image[question]}
-                            alt="Campus Life Illustration"
-                            width={368} 
-                            height={294}
-                            className='w-[200px] h-[200px] object-contain mb-6'
-                        />
-                        :
-                        <h1>Loading...</h1>
-                    }
-                    <div className="flex flex-row gap-2">
-                        {
-                            Array.from(colors, (_, index) => (
-                                <button key={index} id={index.toString()} className="w-10 h-10 bg-gray-400 rounded text-white font-bold" onClick={(e) => handleColorClick(e, index+1)} onMouseEnter={(e) => handleHover(e, index)}>{index+1}</button>
-                            ))
-                        }
-                    </div>
-                </form>
-            </div>
+    // Move to the next question after a short delay
+    setTimeout(() => {
+      if (questionIndex + 1 < questionData.length) {
+        setSelectedScore(null);
+        setHoverIndex(null);
+        setQuestionIndex(prev => prev + 1);
+      } else {
+        redirect('/multiselect');
+      }
+    }, 500);
+  };
+
+  return (
+    <div className="p-6 w-full flex flex-col justify-center items-center">
+      <div className="w-full max-w-md flex flex-col items-center p-6 bg-gray-300 bg-opacity-50 backdrop-blur-md rounded-2xl shadow-lg">
+        <h1 className="text-white text-2xl font-semibold text-center mb-10">
+          {currentQuestion}
+        </h1>
+
+        {/* Question Image */}
+        <Image 
+          src={questionData[questionIndex].image} 
+          alt="Question Illustration"
+          width={200}
+          height={200}
+          className="mb-6 object-contain"
+        />
+
+        {/* Score Selection */}
+        <div className="flex gap-2">
+          {colors.map((color, index) => (
+            <button
+              key={index}
+              className="w-10 h-10 rounded text-white font-bold transition-all duration-300"
+              style={{
+                backgroundColor:
+                  selectedScore !== null
+                    ? selectedScore === index + 1
+                      ? color
+                      : '#9ca3af' // Grey out unselected ones after selection
+                    : hoverIndex !== null && index <= hoverIndex
+                    ? colors[index] // Apply hover animation
+                    : '#9ca3af',
+              }}
+              onClick={(e) => handleSelect(e, index + 1)}
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(null)}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default GetScore;
