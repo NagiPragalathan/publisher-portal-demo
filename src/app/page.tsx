@@ -17,7 +17,7 @@ const data = {
   
   "campusLifeScore": 1,
   "internationalExposureScore": 1,
-
+  
   "placementRecordScore": 1,
   "academicScore": 1,
   "infrastructureScore": 1,

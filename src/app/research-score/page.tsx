@@ -12,7 +12,8 @@ const ResearchScoreForm = () => {
     };
     localStorage.setItem('form_data', JSON.stringify(formData));
     console.log(localStorage.getItem('form_data'));
-    redirect('/theory-score');
+    redirect('/get-score/research');
+    // redirect('/theory-score');
   };
 
   return (
