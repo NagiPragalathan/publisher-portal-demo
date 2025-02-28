@@ -36,7 +36,7 @@ export default function RankingResults() {
           researchScore: stored_data.researchScore || 1,
           theoryScore: stored_data.Theory || 1,
           campusLifeScore: stored_data.campusLifeScore || 1,
-          internationalExposureScore: stored_data.internationalExposureScore || 1,
+          internationalExposureScore: 1 ||stored_data.internationalExposureScore || 1,
           placementRecordScore: stored_data.placementRecordScore || 1,
           academicScore: stored_data.academicScore || 1,
           infrastructureScore: stored_data.infrastructureScore || 1,

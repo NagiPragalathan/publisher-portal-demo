@@ -7,10 +7,17 @@ const ResearchScoreForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = {
-      researchScore: selectedOption === 'Research' ? 1 : 0,
-    };
-    localStorage.setItem('form_data', JSON.stringify(formData));
+    let getScore = localStorage.getItem('form_data');
+    if (getScore) {
+      const formData = JSON.parse(getScore);
+      formData.researchScore = selectedOption === 'Research' ? 1 : 0;
+      localStorage.setItem('form_data', JSON.stringify(formData));
+    } else {
+      const formData = {
+        researchScore: selectedOption === 'Research' ? 1 : 0,
+      };
+      localStorage.setItem('form_data', JSON.stringify(formData));
+    }
     console.log(localStorage.getItem('form_data'));
     redirect('/get-score/research');
     // redirect('/theory-score');

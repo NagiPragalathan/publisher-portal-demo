@@ -13,12 +13,18 @@ CORS(app)
 def rank_colleges():
     # Get data from the request
     data = request.json
+    # for i, j in data.items():
+    #     if i not in ['state', 'city', 'rankingType']:
+    #         data[i] = 1
 
+    print(data)
     # Define the API endpoint URL for the third-party API
     url = "https://edulot-api.netlify.app/ranker"
 
     # Send POST request to the third-party API
     response = requests.post(url, json=data)
+    
+    print(response)
 
     # Check if the request was successful
     if response.status_code == 200:
