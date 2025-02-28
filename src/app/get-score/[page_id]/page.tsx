@@ -12,28 +12,28 @@ const questionData = [
     head: "How Important is Campus Life to You?",
     type: "camp",
     redirect: "/get-score/inter",
-    image: 'https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png'
+    image: 'https://s3-alpha-sig.figma.com/img/6e33/ef96/58dda19a5a0aa15ca10401a20ba3f6bf?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ZoA4joKTIYlBB3e-ndKi8u0dL1EK0x16hy4nKKOFG73JBvzI~GhZJcpenmkLh0lNxo3EuRNE44IeFallz3aJij5u3N-XDakIRDxXwUHlatxmJRUTQaDatWsiDC0hpRnaSTsgkilOYENsB8m4yDPtlSmX9SeNBRns39hnm5vGt1X6xMB713bIyZFfRF4qNGA8jN-pfj8aB0CCdshQ2SVAXjpQzzZBZ8cIU0oHHSZtodnecFMW6ofqEdVCJBuq3B50uKOleErjtTy1MZCIiJyj91fDAWXnlrLo37v~NwBAlXZLjcTK1EsELEMWA86ApjTNjVYQXI0HjwoZ~F4L5NDSFg__'
   },
   {
     key: "internationalExposureScore",
     head: "How important is global experience in your education?",
     type: "inter",
     redirect: "/multiselect",
-    image: 'https://png.pngtree.com/png-clipart/20230811/original/pngtree-expo-center-color-icon-vector-picture-image_7867463.png'
+    image: 'https://s3-alpha-sig.figma.com/img/4ec7/844a/2b57bf5c1404166a0cd685a2c869e7cf?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HOzRSp6RXJcMsxWXZen2ZXYCxZ5a~pR5lR~ea8uCTkZ6sr8S6t6apWR-1F9~8EQC8AhGCkGh8FiScbXclGBK5TpB4g97aRKIpT91QifT8kpZvvQzMVb-clsdq2MbO3AABXfHogrjBuFKQA4krrt9TKLdGOa6pjC4WweirI7-s5PEq~FZ5RcN~Xdh7LD35KEI3dz0mYhk011X4qfDfk-JkCfwffvtklbHW2t-Mn8getvJgLmGgTlVOaoSundbOj7gA3~cfCEOQs~WEpqSI3mLIC98S5AX-aj2pOIZ8MYRLSVgEHIsWmtGWLuHS2-A8gmn4po2d88pVejAv3mddUp9tw__'
   },
   {
     key: "researchScore",
     head: "How crucial is research involvement in your education?",
     type: "research",
     redirect: "/theory-score",
-    image: 'https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png'
+    image: 'https://static.vecteezy.com/system/resources/previews/003/857/417/large_2x/people-working-in-the-office-free-vector.jpg'
   },
   {
     key: "theoryScore",
     head: "How important is hands-on experience in your education?",
     type: "theory",
     redirect: "/get-score/camp",
-    image: 'https://ouch-cdn2.icons8.com/2Q2lX6dXeKehcc62zXUkmHilb6sFftY3MkpINoBxihs/rs:fit:368:294/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzYy/L2FjNzdmZjlmLTJj/MTMtNDNiMy1hMWY4/LTZmMjZkYTdlNWFk/ZS5zdmc.png'
+    image: 'https://cdn.dribbble.com/users/1170793/screenshots/5996967/work_pack_white-01_4x.png'
   },
 ];
 
