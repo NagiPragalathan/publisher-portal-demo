@@ -38,7 +38,8 @@ const Multiselect = () => {
   
     predefinedValues.forEach(e => {
       if (values.includes(e)) {
-        get_local_storage[e] = 1;
+        const index = values.indexOf(e);
+        get_local_storage[e] = index === 0 ? 3 : index === 1 ? 2 : 1;
       } else {
         get_local_storage[e] = 0;
       }
@@ -65,13 +66,11 @@ const Multiselect = () => {
   };
 
   const handleSelectSuggestion = (value: string) => {
-    if (!values.includes(value)) {
+    if (!values.includes(value) && values.length < 3) {
       setValues((prevValues) => [...prevValues, value]);
+      setInputValue('');
+      setSuggestions(predefinedValues.filter((suggestion) => !values.includes(suggestion)));
     }
-    setInputValue('');
-    setSuggestions(predefinedValues.filter((suggestion) => !values.includes(suggestion)));
-    setSuggestions((prevSuggestions) => prevSuggestions.filter((v) => v !== value));
-
   };
 
   const handleDelete = (valueToDelete: string) => {
@@ -81,10 +80,10 @@ const Multiselect = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>, value: string) => {
     e.preventDefault();
-    if (!values.includes(value)) {
+    if (!values.includes(value) && values.length < 3) {
       setValues((prevValues) => [...prevValues, value]);
+      setSuggestions((prevSuggestions) => prevSuggestions.filter((v) => v !== value));
     }
-    setSuggestions((prevSuggestions) => prevSuggestions.filter((v) => v !== value));
   };
 
   return (

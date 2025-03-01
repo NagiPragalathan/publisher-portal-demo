@@ -45,8 +45,10 @@ export default function RankingResults() {
           costEffectivenessScore: stored_data.costEffectivenessScore || 0,
           influenceFactor: stored_data.influenceFactor || 0
         }
+        console.log(payload);
 
         const response = await fetch(`http://127.0.0.1:5000/rank_colleges`, {
+        // const response = await fetch(`https://edulot-api.netlify.app/ranker`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

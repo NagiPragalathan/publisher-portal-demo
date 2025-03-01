@@ -29,9 +29,23 @@ const questionData = [
     image: 'https://static.vecteezy.com/system/resources/previews/003/857/417/large_2x/people-working-in-the-office-free-vector.jpg'
   },
   {
+    key: "researchScore",
+    head: "How crucial is Industry involvement in your education?",
+    type: "industry",
+    redirect: "/theory-score",
+    image: 'https://static.vecteezy.com/system/resources/previews/003/857/417/large_2x/people-working-in-the-office-free-vector.jpg'
+  },
+  {
     key: "theoryScore",
     head: "How important is hands-on experience in your education?",
     type: "theory",
+    redirect: "/get-score/camp",
+    image: 'https://cdn.dribbble.com/users/1170793/screenshots/5996967/work_pack_white-01_4x.png'
+  },
+  {
+    key: "theoryScore",
+    head: "How important is hands-on experience in practical way of your education?",
+    type: "practical",
     redirect: "/get-score/camp",
     image: 'https://cdn.dribbble.com/users/1170793/screenshots/5996967/work_pack_white-01_4x.png'
   },
@@ -67,14 +81,20 @@ const GetScore = ({ params }: { params: any }) => {
       // Get previous form data
       const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
 
+      // Adjust score for Industry and Practical types (subtract 1)
+      let adjustedScore = score;
+      if (currentQuestion.type === 'industry' || currentQuestion.type === 'practical') {
+        adjustedScore = score - 1;
+      }
+
       // Update the form data with the selected score
       const updatedData = {
         ...formData,
-        [currentQuestion.key]: score // Store the selected score with the correct key
+        [currentQuestion.key]: adjustedScore // Store the adjusted score
       };
 
       localStorage.setItem('form_data', JSON.stringify(updatedData));
-      setSelectedScore(score);
+      setSelectedScore(score); // Keep original score for UI display
 
       console.log(updatedData);
 
