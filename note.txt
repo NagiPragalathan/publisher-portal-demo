@@ -29,3 +29,8 @@ first, second, third    - p
 
 
 for rankingType need to fetch from new route!
+
+
+
+dynamic selection type is left !
+
