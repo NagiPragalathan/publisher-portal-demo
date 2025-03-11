@@ -1,10 +1,14 @@
+'use client';
+
 import React from 'react';
 import Profile from "@/components/profile";
 import ProgressBar from "@/components/progress_bar";
 import { current_grade, stream, entrance_exam, specialization, graduate } from "@/components/constants/form_data";
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
-const Step1Form = ({params}: {params: any}) => {
+const Step1Form = () => {
+  const params = useParams();
 
   let form_list_data: any, progress: number = 0, completed_steps: number[] = [];
 
