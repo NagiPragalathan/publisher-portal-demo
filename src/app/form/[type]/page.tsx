@@ -2,10 +2,11 @@ import React from 'react';
 import Profile from "@/components/profile";
 import ProgressBar from "@/components/progress_bar";
 import { current_grade, stream, entrance_exam, specialization, graduate } from "@/components/constants/form_data";
+import Link from 'next/link';
 
 const Step1Form = ({params}: {params: any}) => {
 
-  let form_list_data: any, progress: number, completed_steps: number[];
+  let form_list_data: any, progress: number = 0, completed_steps: number[] = [];
 
   if (params.type === "current-grade") {
     form_list_data = current_grade;
@@ -36,7 +37,7 @@ const Step1Form = ({params}: {params: any}) => {
   return (
     <>
       <Profile />
-      <ProgressBar progress={progress} completed_steps={completed_steps} />
+      <ProgressBar progress={progress || 0} completed_steps={completed_steps || []} />
       <div className="p-6 w-full flex flex-col justify-center items-center">
         {form_list_data.map((form: any, index: any) => (
           <div key={index} className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
@@ -46,7 +47,7 @@ const Step1Form = ({params}: {params: any}) => {
 
             <div className="w-full flex flex-col justify-center items-center">
               {form.options.map((option: any, i: any) => (
-                <a href={params.type === "stream10" ? "/field-interest" : option.next_link}
+                <Link href={params.type === "stream10" ? "/field-interest" : option.next_link}
                   key={i}
                   className="w-full h-[57px] flex flex-row justify-start items-center gap-4 bg-white rounded-full p-4 shadow-md mb-4"
                 >
@@ -54,12 +55,12 @@ const Step1Form = ({params}: {params: any}) => {
                     {option.icon}
                   </div>
                   <div className="text-lg font-semibold text-gray-800">{option.name}</div>
-                </a>
+                </Link>
               ))}
             </div>
             {
               params.type === "entrance-exam" && (
-                <p className="text-[#FFFFFF] text-[12px] font-[400] text-center mt-4">Haven’t Taken Entrance Exams Yet? <a href="/field-interest" className="text-[#FFBD58] text-[12px] font-[400] text-center mt-4">Skip This for Now!</a></p>
+                <p className="text-[#FFFFFF] text-[12px] font-[400] text-center mt-4">Haven’t Taken Entrance Exams Yet? <Link href="/field-interest" className="text-[#FFBD58] text-[12px] font-[400] text-center mt-4">Skip This for Now!</Link></p>
               )
             }
           </div>

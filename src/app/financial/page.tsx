@@ -1,22 +1,23 @@
-'use client'; // <-- Add this line to mark the component as a client component
+'use client';
 
-import React, { useState } from 'react'; // Import useState
+import React, { useState } from 'react';
 import Profile from '@/components/profile';
 import ProgressBar from '@/components/progress_bar';
 import { FaAngleRight } from 'react-icons/fa';
 import { redirect } from 'next/navigation';
-const ResearchScoreForm = () => {
-  const [selectedOption, setSelectedOption] = useState(''); // Using useState
+import Link from 'next/link';
 
-  const handleRadioChange = (e) => {
+const ResearchScoreForm = () => {
+  const [selectedOption, setSelectedOption]: [string, (value: string) => void] = useState('');
+
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSelectedOption(value);
 
-    // Redirect based on the selected option
     if (value === 'yes') {
-      redirect('/financial-aid'); // Redirect to /asdf if "Yes" is selected
+      redirect('/financial-aid');
     } else if (value === 'no') {
-      redirect('/research-score'); // Redirect to /qwer if "No" is selected
+      redirect('/research-score');
     }
   };
 
@@ -42,7 +43,7 @@ const ResearchScoreForm = () => {
                     value="yes"
                     className="mr-2"
                     checked={selectedOption === 'yes'}
-                    onChange={handleRadioChange} // Use the handleRadioChange function
+                    onChange={handleRadioChange}
                   />
                   <label htmlFor="yes" className="text-white">
                     Yes
@@ -56,7 +57,7 @@ const ResearchScoreForm = () => {
                     value="no"
                     className="mr-2"
                     checked={selectedOption === 'no'}
-                    onChange={handleRadioChange} // Use the handleRadioChange function
+                    onChange={handleRadioChange}
                   />
                   <label htmlFor="no" className="text-white">
                     No
@@ -67,14 +68,14 @@ const ResearchScoreForm = () => {
 
             {/* Next Button */}
             <div className="w-full flex flex-row justify-end items-center mt-16">
-              <a href="/research-score">
+              <Link href="/research-score">
                 <div className="flex flex-row justify-center items-center gap-2 w-[100px] h-[40px] bg-[#FFBD58] rounded-full p-2 shadow-md mb-4 text-gray-700 hover:bg-[#e6a84a] transition duration-300">
                   <span className="text-[16px] font-[600] text-black">Next</span>
                   <span className="w-[23px] h-[23px] text-[16px] font-[600] text-black bg-white rounded-full flex justify-center items-center font-bold">
                     <FaAngleRight />
                   </span>
                 </div>
-              </a>
+              </Link>
             </div>
           </form>
         </div>

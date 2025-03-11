@@ -75,30 +75,26 @@ const GetScore = ({ params }: { params: any }) => {
   const handleSelect = (e: React.MouseEvent<HTMLElement>, score: number) => {
     e.preventDefault();
 
-    if (selectedScore !== null) return; // Prevent multiple selections
+    if (selectedScore !== null) return;
 
     if (currentQuestion) {
-      // Get previous form data
       const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
 
-      // Adjust score for Industry and Practical types (subtract 1)
       let adjustedScore = score;
       if (currentQuestion.type === 'industry' || currentQuestion.type === 'practical') {
         adjustedScore = score - 1;
       }
 
-      // Update the form data with the selected score
       const updatedData = {
         ...formData,
-        [currentQuestion.key]: adjustedScore // Store the adjusted score
+        [currentQuestion.key]: adjustedScore
       };
 
       localStorage.setItem('form_data', JSON.stringify(updatedData));
-      setSelectedScore(score); // Keep original score for UI display
+      setSelectedScore(score);
 
       console.log(updatedData);
 
-      // Redirect after short delay
       setTimeout(() => {
         redirect(redirectPath || "/multiselect");
       }, 500);
@@ -116,7 +112,6 @@ const GetScore = ({ params }: { params: any }) => {
           {currentQuestion.head}
         </h1>
 
-        {/* Question Image */}
         <Image 
           src={currentQuestion.image || ""}
           alt="Question Illustration"
@@ -125,7 +120,6 @@ const GetScore = ({ params }: { params: any }) => {
           className="mb-6 object-contain"
         />
 
-        {/* Score Selection */}
         <div className="flex gap-2">
           {colors.map((color, index) => (
             <button
@@ -136,15 +130,15 @@ const GetScore = ({ params }: { params: any }) => {
                   selectedScore !== null
                     ? selectedScore === index + 1
                       ? color
-                      : '#9ca3af' // Grey out unselected ones after selection
+                      : '#9ca3af'
                     : hoverIndex !== null && index <= hoverIndex
-                    ? colors[index] // Apply hover animation
+                    ? colors[index]
                     : '#9ca3af',
               }}
               onClick={(e) => handleSelect(e, index + 1)}
               onMouseEnter={() => setHoverIndex(index)}
               onMouseLeave={() => setHoverIndex(null)}
-              disabled={selectedScore !== null} // Prevent clicking multiple times
+              disabled={selectedScore !== null}
             >
               {index + 1}
             </button>

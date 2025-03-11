@@ -3,10 +3,6 @@ import { useState } from "react";
 import Profile from "@/components/profile";
 import ProgressBar from "@/components/progress_bar";
 import InfoPopup from "@/components/info_popup"
-import ResearchScoreForm from "@/components/forms/researchScore";
-import TheoryScoreForm from "@/components/forms/theoryScore";
-import GetScore from "@/components/forms/getScore";
-import Multiselect from "@/components/forms/multiselect";
 
 const data = {
   "state": "Tamil Nadu",
@@ -33,10 +29,6 @@ export default function Home() {
       <Profile />
       <ProgressBar progress={1} completed_steps={[1,0,0,0,0]} />
       <InfoPopup />
-      {/* <ResearchScoreForm /> */}
-      {/* <TheoryScoreForm /> */}
-      {/* <GetScore /> */}
-      {/* <Multiselect /> */}
     </>
   );
 }

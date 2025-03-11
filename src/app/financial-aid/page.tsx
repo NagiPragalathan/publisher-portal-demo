@@ -6,16 +6,15 @@ import { FaAngleRight } from "react-icons/fa";
 import { redirect } from 'next/navigation';
 
 const InputForm = () => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // State to hold selected options
+  const [selectedOptions, setSelectedOptions]: [string[], (value: string[]) => void] = useState<string[]>([]);
 
-  // Handle change for multi-select
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const options = Array.from(e.target.selectedOptions, (option: HTMLOptionElement) => option.value);
     setSelectedOptions(options);
   };
 
   const handleNextClick = () => {
-    redirect('/research-score'); // Redirect to /research-score when Next is clicked
+    redirect('/research-score');
   };
 
   return (
@@ -47,7 +46,7 @@ const InputForm = () => {
             
             <div className="w-full flex flex-row justify-end items-center mt-16">
               <div
-                onClick={handleNextClick} // Handle the click for next
+                onClick={handleNextClick}
                 className="flex flex-row justify-center items-center gap-2 w-[100px] h-[40px] bg-[#FFBD58] rounded-full p-2 shadow-md mb-4 text-gray-700 hover:bg-[#e6a84a] transition duration-300 cursor-pointer"
               >
                 <span className="text-[16px] font-[600] text-black">Next</span>

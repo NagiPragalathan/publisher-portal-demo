@@ -1,31 +1,31 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { FaAngleRight } from "react-icons/fa";
 import { ranges } from '@/components/constants/form_data';
 import Image from 'next/image';
-const Slider = ({ params }: { params: any }) => {
-    const [value, setValue] = useState(5);  // default slider value
-    const [currentObject, setCurrentObject] = useState<any>(null);  // Will hold the object based on params
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
-    // React.use() to unwrap the Promise
-    const resolvedParams = React.use(params);
+const Slider = () => {
+    const params = useParams();
+    const [value, setValue] = useState(5);
+    const [currentObject, setCurrentObject] = useState<any>(null);
 
-    // Get the range data based on resolvedParams.type
     useEffect(() => {
-        if (resolvedParams?.type === "salary_range") {
+        if (params?.type === "salary_range") {
             setCurrentObject(ranges.salary_range);
-        } else if (resolvedParams?.type === "budget_range") {
+        } else if (params?.type === "budget_range") {
             setCurrentObject(ranges.budget_range);
         }
-    }, [resolvedParams]);
+    }, [params]);
 
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(parseInt(e.target.value));
     };
 
     if (!currentObject) {
-        return <div>Loading...</div>;  
+        return <div>Loading...</div>;
     }
 
     return (
@@ -35,7 +35,6 @@ const Slider = ({ params }: { params: any }) => {
                     {currentObject.title}
                 </h1>
                 <Image src={currentObject.image_url} alt="Campus Life Illustration" width={368} height={294} className='w-[200px] h-[200px] object-contain mb-6' />
-                {/* Range Slider */}
                 <div className="w-full mb-4 p-2 bg-white rounded-md flex flex-row justify-center items-center gap-2">
                     <input
                         type="range"
@@ -49,14 +48,14 @@ const Slider = ({ params }: { params: any }) => {
                     <span className="text-black text-center mt-2 mb-[10px] font-[600]">LPA</span>
                 </div>
                 <div className="w-full flex flex-row justify-end items-center mt-16">
-                    <a href={currentObject.next_link}>
+                    <Link href={currentObject.next_link}>
                         <div className="flex flex-row justify-center items-center gap-2 w-[100px] h-[40px] bg-[#FFBD58] rounded-full p-2 shadow-md mb-4 text-gray-700 hover:bg-[#e6a84a] transition duration-300">
                             <span className="text-[16px] font-[600] text-black">Next</span>
                             <span className="w-[23px] h-[23px] text-[16px] font-[600] text-black bg-white rounded-full flex justify-center items-center font-bold">
                                 <FaAngleRight />
                             </span>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

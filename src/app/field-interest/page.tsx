@@ -3,7 +3,7 @@
 import Profile from '@/components/profile';
 import ProgressBar from '@/components/progress_bar';
 import React, { useEffect, useState } from 'react'
-import { field_of_interest } from '@/components/constants/form_data';
+import Link from 'next/link';
 
 const FieldInterest = () => {
     const [rankings, setRankings] = useState<string[]>([]);
@@ -77,7 +77,7 @@ const FieldInterest = () => {
                         {rankings.map((ranking, index) => {
                             const displayName = ranking.replace('Ranking', '');
                             return (
-                                <a 
+                                <Link 
                                     key={index}
                                     href="/form/specialization" 
                                     className='w-full h-auto flex flex-col justify-between items-start bg-[#EEEEEE] rounded-lg p-4 shadow-md mb-4 gap-3 hover:bg-[#FFD777] cursor-pointer'
@@ -98,7 +98,7 @@ const FieldInterest = () => {
                                             className='w-[70%] h-fit object-cover' 
                                         />
                                     </div>
-                                </a>
+                                </Link>
                             );
                         })}
                     </div>

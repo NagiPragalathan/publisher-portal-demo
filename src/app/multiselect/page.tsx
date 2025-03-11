@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Multiselect = () => {
   const predefinedValues = [
@@ -148,14 +149,14 @@ const Multiselect = () => {
         </div>
 
         <div className="w-full flex flex-row justify-end items-center mt-16">
-            <a href='/list-clg'>
+            <Link href='/list-clg'>
                 <div className="flex flex-row justify-center items-center gap-2 w-[100px] h-[40px] bg-[#FFBD58] rounded-full p-2 shadow-md mb-4 text-gray-700 hover:bg-[#e6a84a] transition duration-300">
                     <span className="text-[16px] font-[600] text-black">Next</span>
                     <span className="w-[23px] h-[23px] text-[16px] font-[600] text-black bg-white rounded-full flex justify-center items-center font-bold">
                         <FaAngleRight />
                     </span>
                 </div>
-            </a>
+            </Link>
         </div>
       </div>
     </div>
