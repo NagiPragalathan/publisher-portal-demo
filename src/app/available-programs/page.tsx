@@ -14,21 +14,16 @@ const programs = [
 const InputForm = () => {
   return (
     <>
-      {/* Profile Section */}
       <Profile />
 
-      {/* Progress Bar */}
       <ProgressBar progress={35} completed_steps={[1, 1, 0, 0, 0]} />
 
-      {/* Main Container */}
       <div className="flex flex-col items-center justify-center w-full p-6">
         <div className="max-w-md w-full bg-gray-300 bg-opacity-50 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-          {/* Heading */}
           <h1 className="text-white text-2xl font-semibold mb-10">
             Entrance Exam & Score
           </h1>
 
-          {/* Program Selection Box */}
           <div className="w-full bg-white rounded-lg p-6 text-left">
             <h2 className="text-black text-lg font-semibold mb-2">
               Select Programs
