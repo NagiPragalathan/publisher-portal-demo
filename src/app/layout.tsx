@@ -3,7 +3,7 @@
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import { useState, useEffect } from "react";
-
+import Footer from "@/components/footer";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,6 +55,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

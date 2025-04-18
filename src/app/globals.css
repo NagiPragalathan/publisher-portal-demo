@@ -11,3 +11,9 @@
 *::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
+
+#footer-bg {
+    background-image: url('/background_particals/footer_bg.png');
+    background-size: cover;
+    background-position: center;
+}
