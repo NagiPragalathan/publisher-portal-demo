@@ -159,7 +159,7 @@ const ranges = {
     salary_range: {
       title: "What is Your Target Salary Range?",
       image_url: "https://static.vecteezy.com/system/resources/previews/000/486/174/original/isometric-artificial-intelligence-vector-illustration.jpg",
-      next_link:  '/range/budget_range'
+      next_link:  '/flow-chart/3'
     },
     budget_range: {
       title: "What is Your Budget Range for the Total Course?",

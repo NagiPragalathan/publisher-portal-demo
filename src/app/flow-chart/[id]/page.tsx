@@ -2,7 +2,7 @@
 
 import Profile from '@/components/profile';
 import ProgressBar from '@/components/progress_bar';
-import React from 'react'
+import React, { useMemo } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import Chart_one from '@/components/charts/Chart_one';
@@ -14,6 +14,21 @@ import Chart_five from '@/components/charts/Chart_five';
 
 const FlowChart = () => {
   const params = useParams();
+
+  // Progress data mapping based on ID
+  const progressData = useMemo(() => {
+    const progressMap = {
+      '1': { progress: 0, completed_steps: [1, 0, 0, 0, 0] },
+      '2': { progress: 20, completed_steps: [1, 1, 0, 0, 0] },
+      '3': { progress: 40, completed_steps: [1, 1, 1, 0, 0] },
+      '4': { progress: 80, completed_steps: [1, 1, 1, 1, 0] },
+      '5': { progress: 88, completed_steps: [1, 1, 1, 1, 1] }
+    };
+
+    return progressMap[params.id as keyof typeof progressMap] || progressMap['1'];
+  }, [params.id]);
+
+  // Component mapping
   let render_component: React.ReactNode;
   if(params.id === '1'){
     render_component = <Chart_one />
@@ -30,7 +45,10 @@ const FlowChart = () => {
   return (
     <div className="min-h-screen bg-transparent">
       <Profile />
-      <ProgressBar progress={11} completed_steps={[1, 0, 0, 0, 0]} />
+      <ProgressBar 
+        progress={progressData.progress} 
+        completed_steps={progressData.completed_steps} 
+      />
       {render_component}
     </div>
   )

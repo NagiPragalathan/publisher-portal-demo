@@ -17,14 +17,14 @@ const ResearchScoreForm = () => {
     if (value === 'yes') {
       redirect('/financial-aid');
     } else if (value === 'no') {
-      redirect('/research-score');
+      redirect('/flow-chart/4');
     }
   };
 
   return (
     <>
       <Profile />
-      <ProgressBar progress={18} completed_steps={[1, 0, 0, 0, 0]} />
+      <ProgressBar progress={60} completed_steps={[1, 1, 1, 0, 0]} />
       <div className="p-6 w-full flex flex-col justify-center items-center">
         <div className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6">
           <h1 className="text-[#FFFFFF] text-[24px] font-[600] text-center mb-16">

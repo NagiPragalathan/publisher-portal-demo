@@ -1,0 +1,135 @@
+/* InfoPopup.module.css */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .popupContainer {
+    animation: slideUp 0.6s ease-out forwards;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .popupContainer:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .title {
+    animation: slideUp 0.5s ease-out forwards;
+    position: relative;
+  }
+  
+  .title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FFBD58;
+    transition: width 0.3s ease;
+  }
+  
+  .title:hover::after {
+    width: 100%;
+  }
+  
+  .listItem {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .listItem:hover {
+    transform: translateX(8px);
+  }
+  
+  .bullet {
+    animation: pulse 2s infinite;
+  }
+  
+  .startButton {
+    animation: fadeIn 0.8s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .startButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .startButton:hover {
+    transform: scale(1.05);
+    background-color: #e5aa4f;
+    box-shadow: 0 0 15px rgba(255, 189, 88, 0.5);
+  }
+  
+  .startButton:hover::before {
+    transform: translateX(100%);
+  }
+  
+  /* Add responsive styles */
+  @media (max-width: 768px) {
+    .popupContainer {
+      padding: 4rem 1.5rem;
+    }
+    
+    .title {
+      font-size: 20px;
+    }
+    
+    .listItem {
+      font-size: 12px;
+    }
+  }

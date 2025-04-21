@@ -71,7 +71,7 @@ const FieldInterest = () => {
             <div className='w-full px-6 mt-12 flex flex-col justify-center items-center'>   
                 <div className='w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6'>
                     <h1 className='text-[#FFFFFF] text-[24px] font-[600] text-center mb-6'>
-                        Select Ranking Type
+                    Primary field of interest
                     </h1>
                     <div className='grid grid-cols-2 gap-4 w-full'>
                         {rankings.map((ranking, index) => {

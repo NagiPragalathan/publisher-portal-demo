@@ -1,6 +1,9 @@
 'use client';
 import { redirect } from 'next/navigation';
 import React, { useState } from 'react';
+import Profile from '@/components/profile';
+import ProgressBar from '@/components/progress_bar';
+
 
 const ResearchScoreForm = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -18,6 +21,9 @@ const ResearchScoreForm = () => {
   };
 
   return (
+    <>
+    <Profile />
+    <ProgressBar progress={85} completed_steps={[1, 1, 1, 1, 0]} />
     <div className="p-6 w-full flex flex-col justify-center items-center">
       <div className="w-full max-w-[400px] flex flex-col justify-center items-center p-6 bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-2">
         <h1 className="text-[#FFFFFF] text-[24px] font-[600] text-center mb-6">
@@ -43,6 +49,7 @@ const ResearchScoreForm = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

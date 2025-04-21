@@ -1,0 +1,95 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0px 0px 11px 7px rgba(104, 255, 110, 0.4);
+  }
+  50% {
+    box-shadow: 0px 0px 11px 7px rgba(104, 255, 110, 0.7);
+  }
+  100% {
+    box-shadow: 0px 0px 11px 7px rgba(104, 255, 110, 0.4);
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.percentageText {
+  animation: slideIn 0.5s ease-out;
+}
+
+.progressBar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  width: 0;
+  animation: fillProgress 1.5s ease-out forwards;
+}
+
+.progressDot {
+  animation: dotPulse 2s infinite;
+  background: #68ff6d !important;
+  box-shadow: 0px 0px 12px 7px #68ff6e !important;
+}
+
+.glowDot {
+  animation: glowPulse 2s infinite;
+}
+
+.stepCircle {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    transform: translate(50%, -50%) scale(1);
+    box-shadow: 0px 0px 12px 7px rgba(104, 255, 110, 0.8) !important;
+  }
+  50% {
+    transform: translate(50%, -50%) scale(1.1);
+    box-shadow: 0px 0px 16px 8px rgba(104, 255, 110, 1) !important;
+  }
+  100% {
+    transform: translate(50%, -50%) scale(1);
+    box-shadow: 0px 0px 12px 7px rgba(104, 255, 110, 0.8) !important;
+  }
+} 

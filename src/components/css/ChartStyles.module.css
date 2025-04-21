@@ -1,0 +1,44 @@
+/* ChartStyles.module.css */
+.container {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.studentImage {
+  animation: simpleFloat 3s ease-in-out infinite;
+}
+
+.gradientButton {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(153deg, rgb(179 121 223 / 99%) 0%, rgb(255 189 88 / 68%) 100%);
+}
+
+.gradientButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(179, 121, 223, 0.3);
+}
+
+.gradientButton:active {
+  transform: translateY(0);
+}
+
+/* Simple Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes simpleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

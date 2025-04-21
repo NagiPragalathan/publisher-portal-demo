@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import Link from 'next/link';
+import Profile from '@/components/profile';
+import ProgressBar from '@/components/progress_bar';
 
 const Multiselect = () => {
   const predefinedValues = [
@@ -88,6 +90,9 @@ const Multiselect = () => {
   };
 
   return (
+    <>
+    <Profile />
+    <ProgressBar progress={90} completed_steps={[1, 1, 1, 1, 1]} />
     <div className="p-6 flex flex-col justify-center items-center">
       <div className="p-6 w-full flex flex-col justify-center items-center bg-[#9f9f9f87] backdrop-blur-md rounded-[20px] shadow-lg mb-6 relative m-6">
         <div className="w-full max-w-[400px] flex flex-col justify-center items-center p-6">
@@ -160,6 +165,7 @@ const Multiselect = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

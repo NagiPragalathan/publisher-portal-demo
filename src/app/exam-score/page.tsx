@@ -25,7 +25,7 @@ const InputForm = () => {
                     </select>
                     <input type="text" className="w-full h-[57px] bg-white rounded-lg p-4 shadow-md mb-4 text-gray-500" placeholder="Enter Your Exam Score" />
                     <div className="w-full flex flex-row justify-end items-center mt-16">
-                        <Link href="/field-interest">
+                        <Link href="/flow-chart/2">
                             <div className="flex flex-row justify-center items-center gap-2 w-[100px] h-[40px] bg-[#FFBD58] rounded-full p-2 shadow-md mb-4 text-gray-700 hover:bg-[#e6a84a] transition duration-300">
                                 <span className="text-[16px] font-[600] text-black">Next</span>
                                 <span className="w-[23px] h-[23px] text-[16px] font-[600] text-black bg-white rounded-full flex justify-center items-center font-bold">
